@@ -626,6 +626,42 @@ button:hover {
   .faq-form button:hover {
     background-color: #2b4f6d; /* чуть темнее при наведении */
   }
+.contact input,
+.contact textarea {
+    width: 90%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #4CAF50; /* зелёный акцент при фокусе */
+    background-color: #fff;
+    outline: none;
+}
+
+.contact button {
+    width: 100%;
+    max-width: 200px;
+    min-width: 120px;
+    padding: 12px;
+    background-color: #4292b8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact button:hover {
+    background-color: #2b4f6d; /* чуть темнее при наведении */
+  }
 
   .swiper {
     width: 100%;
