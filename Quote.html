@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Quiz Project</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div class="topnav">
+        <div class="logo">
+            <a href="index.html">
+                <img src="cleaning.png" alt="Logo" height="40">
+            </a> 
+        </div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="Our Services.html">Our Services</a>
+            <a href="Contact Us.html">Contact Us</a>
+            <a href="About Us.html">About Us</a>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-content">
+            <h1 class="web_title _anim-items _anim-no-hide">We'd love to hear from you!</h1>
+        </div>
+    </div>
+<div class = "whyus-header">
+    <div class="quiz-box" id="quiz"></div>
+    <button id="next">Next</button>
+    <button id="submit" style="display:none;">Submit</button>
+    <button href="index.html" id="home" style="display:none;">Go back to the home page</button>  
+</div>    
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBuOPXb-9caqRfAzQStgNulnJ_9vkJsZV8",
+  authDomain: "cleaning-website-70808.firebaseapp.com",
+  projectId: "cleaning-website-70808",
+  storageBucket: "cleaning-website-70808.appspot.com",
+  messagingSenderId: "548948017624",
+  appId: "1:548948017624:web:863df816c9d8840df572ad",
+  measurementId: "G-WBW3MSG46S"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const quizData = [
+  {
+    question: "Which type of cleaning services do you need?",
+    a: "House Cleaning",
+    b: "Office Cleaning",
+    c: "Carpet Cleaning",
+    d: "Upholstery Cleaning",
+    e: "Window Cleaning",
+    f: "End of Tenancy Cleaning",
+    g: "Leather Cleaning",
+    h: "Rug Cleaning",
+    i: "Hard Floor Cleaning",
+    j: "Power Washing",
+    id: "service"
+  },
+  {
+    question: "When do you want the cleaning done?",
+    a: "As soon as possible",
+    b: "Within next few days",
+    c: "Within the next week",
+    d: "Within the next month",
+    id: "timeframe"
+  },
+    {
+    question: "Where are you located?",
+    input: "place",
+    id: "location"
+  },
+  {
+    question: "What email address would you like the quote sent to? This question is required.*",
+    input: "email",
+    id: "email"
+  },
+  {
+    question: "Can we have your contact number?",
+    input: "tel",
+    id: "phone"
+  },
+      {
+        question: "Can we have your name for contact?",
+        input: "text",
+        id: "name"
+    },
+];
+
+const quiz = document.getElementById('quiz');
+const nextButton = document.getElementById('next');
+const submitButton = document.getElementById('submit');
+const homeButton = document.getElementById('home');
+let currentQuiz = 0;
+let answers = {};
+
+function loadQuiz() {
+  quiz.innerHTML = '';
+  const current = quizData[currentQuiz];
+
+  const qEl = document.createElement('div');
+  qEl.classList.add('question');
+  qEl.innerText = current.question;
+  quiz.appendChild(qEl);
+
+  if (current.input) {
+    const input = document.createElement('input');
+    input.type = current.input;
+    input.id = current.id;
+    input.value = answers[current.id] || '';
+    quiz.appendChild(input);
+  } else {
+    ['a','b','c','d','e','f','g','h','i','j'].forEach(key => {
+      if (current[key]) {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = current.id;
+        input.value = current[key];
+        if (answers[current.id] === current[key]) input.checked = true;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(current[key]));
+        quiz.appendChild(label);
+      }
+    });
+  }
+
+  nextButton.style.display = currentQuiz < quizData.length - 1 ? 'inline' : 'none';
+  submitButton.style.display = currentQuiz === quizData.length - 1 ? 'inline' : 'none';
+}
+
+function validateAndStoreCurrentAnswer() {
+  const current = quizData[currentQuiz];
+  if (current.input) {
+    const input = document.getElementById(current.id);
+    const value = input.value.trim();
+    if (!value) {
+      alert("Please fill out this field.");
+      return false;
+    }
+    if (current.input === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      alert("Please enter a valid email.");
+      return false;
+    }
+    if (current.input === "tel" && !/^[\d\s()+-]{7,20}$/.test(value)) {
+      alert("Please enter a valid phone number.");
+      return false;
+    }
+    answers[current.id] = value;
+  } else {
+    const selected = document.querySelector(`input[name="${current.id}"]:checked`);
+    if (!selected) {
+      alert("Please select an option.");
+      return false;
+    }
+    answers[current.id] = selected.value;
+  }
+  return true;
+}
+
+nextButton.addEventListener('click', () => {
+  if (!validateAndStoreCurrentAnswer()) return;
+  currentQuiz++;
+  loadQuiz();
+});
+
+submitButton.addEventListener('click', async () => {
+  if (!validateAndStoreCurrentAnswer()) return;
+
+  try {
+    await addDoc(collection(db, "quiz_responses"), {
+      quizAnswers: answers,
+      createdAt: new Date()
+    });
+    quiz.innerHTML = "<h2>Thank you! We will reply as soon as possible.</h2>";
+    submitButton.style.display = 'none';
+    homeButton.style.display = 'inline';
+  } catch (error) {
+    console.error("Error saving to Firebase:", error);
+    alert("There was an error submitting your answers. Try again.");
+  }
+});
+
+homeButton.addEventListener('click', () => {
+  window.location.href = "index.html";
+});
+
+loadQuiz();
+</script>
+<script type="module" src="script.js"></script>
+</body>
+</html>

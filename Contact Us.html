@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Book a Cleaning Service Today</title>
+  <meta name="description" content="Get in touch to request a quote or book a cleaning service in Ireland. Fast replies and friendly service guaranteed." />
+  <link rel="icon" href="cleaning.png" type="image/png" />
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script src="cookies-banner.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="topnav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="cleaning.png" alt="Logo" height="40" />
+      </a>
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="Projects.html">Projects</a>
+      <a href="Our Services.html">Our Services</a>
+      <a class="active" href="Contact Us.html">Contact Us</a>
+      <a href="About Us.html">About Us</a>
+    </div>
+  </div>
+
+  <div class="banner">
+    <div class="banner-content">
+      <h1 class="web_title _anim-items _anim-no-hide">Get in Touch with Us</h1>
+      <p class="web_p _anim-items _anim-no-hide">Questions? Feedback? We're here to help — reach out anytime.</p>
+    </div>
+  </div>
+
+  <div class="cards-container">
+    <!-- Left card with contact info -->
+    <div class="card _anim-items _anim-no-hide">
+      <div class="faq-content">
+        <h2>Contact Us</h2>
+        <p>Have a question or need help? We're here for you. Use the form on the right to send us a message — whether it's about our services, a custom request, or just feedback. We aim to reply within 24 hours on business days.</p>
+        <h2>🌐 Other Ways to Reach Us:</h2>
+        <p>📞 Phone: +123 456 7890</p>
+        <p>📧 Email: support@example.com</p>
+        <h2>📍 Business Hours:</h2>
+        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+        <p>Saturday: 10:00 AM - 4:00 PM</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <!-- Right card with form -->
+    <div class="card _anim-items _anim-no-hide">
+      <form class="contact" id="contactform">
+        <h2>If You Have Q's Write Them</h2>
+        <div class="form-group">
+          <label for="name">Phone Number:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="Subject">Subject:</label>
+          <input type="text" id="Subject" name="Subject" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-column">
+      <h2><i class="fas fa-broom"></i> Cleaning Company</h2>
+      <p>Reliable & professional cleaning services for homes and businesses. Your space, our mission.</p>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-column">
+      <h3>Pages</h3>
+      <a href="index.html">Home Page</a>
+      <a href="About Us.html">About Us</a>
+      <a href="Projects.html">Our Projects</a>
+      <a href="Our Services.html">Our Services</a>
+      <a href="Contact Us.html">Contact Us</a>
+      <a href="FAQ.html">FAQ Page</a>
+      <a href="private-policy.html">Privacy Policy</a>
+    </div>
+
+    <div class="footer-column contact-info">
+      <h3>Get in Touch</h3>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Co. Dublin, Ireland</div>
+      <div class="contact-item"><i class="fas fa-phone-alt"></i> 0852014429</div>
+      <div class="contact-item"><i class="fas fa-envelope"></i> info@cleaning.com</div>
+      <div class="contact-item"><i class="fas fa-globe"></i> www.cleaning.ie</div>
+    </div>
+  </footer>
+
+  <script type="module" src="./database.js"></script>
+  <script type="module" src="./script.js"></script>
+</body>
+</html>
