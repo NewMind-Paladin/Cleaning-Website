@@ -19,22 +19,29 @@
 </head>
 <body>
   <div class="topnav">
-    <div class="logo">
-        <a href="index.html">
-            <img src="cleaning.png" alt="Logo" height="40">
-        </a>
-    </div>
-    <div class="menu">
-        <a class="active" href="index.html">Home</a>
-        <a href="Projects.html">Projects</a>
-        <a href="Our Services.html">Our Services</a>
-        <a href="Contact Us.html">Contact Us</a>
-        <a href="About Us.html">About Us</a>
-    </div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="cleaning.png" alt="Logo" height="40">
+    </a>
+  </div>
+
+  <!-- Бургер-кнопка (видна только на мобильных) -->
+  <button class="burger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Меню ссылок -->
+  <div class="menu">
+    <a class="active" href="index.html">Home</a>
+    <a href="Projects.html">Projects</a>
+    <a href="Our Services.html">Our Services</a>
+    <a href="Contact Us.html">Contact Us</a>
+    <a href="About Us.html">About Us</a>
+  </div>
 </div>
     <div class="banner">
         <div class="banner-content">
-            <h1 class="web_title _anim-items _anim-no-hide">Cleaning Company</h1>
+            <h1 class="web_title _anim-items _anim-no-hide">OkCleaning</h1>
             <p class="web_p _anim-items _anim-no-hide">Professional Cleaning Of Houses and Offices</p>
             <p class="web_p _anim-items _anim-no-hide">Contact us today to schedule your cleaning!</p>
             <a href="Book-online.html" class="btn _anim-items _anim-no-hide">Book A Cleaning Online</a>
@@ -169,17 +176,23 @@
       </div>
     
       <div class="contact-item">
-        <i class="fas fa-envelope"></i> info@cleaning.com
+        <i class="fas fa-envelope"></i> info@okcleaning.com
       </div>
     
       <div class="contact-item">
-        <i class="fas fa-globe"></i> www.cleaning.ie
+        <i class="fas fa-globe"></i> www.okcleaning.ie
       </div>
     </div>
 </footer>
-<script type="module" src="database.js"></script>
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+  }
+</script>
 <script src="google-analytics.js"></script>
-<script src="script.js"></script>
+  <script type="module" src="./database.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 </html>
 
