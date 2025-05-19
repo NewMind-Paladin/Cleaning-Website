@@ -10,20 +10,26 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-<div class="topnav">
-        <div class="logo">
-            <a href="index.html">
-                <img src="cleaning.png" alt="Logo" height="40">
-            </a> 
-        </div>
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="Projects.html">Projects</a>
-            <a href="Our Services.html">Our Services</a>
-            <a href="Contact Us.html">Contact Us</a>
-            <a href="About Us.html">About Us</a>
-        </div>
-    </div>
+    <div class="topnav">
+  <div class="logo">
+    <a href="index.html">
+      <img src="cleaning.png" alt="Logo" height="40">
+    </a>
+  </div>
+
+  <!-- Бургер-кнопка (видна только на мобильных) -->
+  <button class="burger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Меню ссылок -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="Projects.html">Projects</a>
+    <a href="Our Services.html">Our Services</a>
+    <a href="Contact Us.html">Contact Us</a>
+    <a href="About Us.html">About Us</a>
+  </div>
     <div class="banner">
         <div class="banner-content">
             <h1 class="web_title _anim-items _anim-no-hide">We'd love to hear from you!</h1>
@@ -196,6 +202,12 @@ homeButton.addEventListener('click', () => {
 });
 
 loadQuiz();
+</script>
+<script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+  }
 </script>
 <script type="module" src="script.js"></script>
 <script type="module" src="database.js"></script>

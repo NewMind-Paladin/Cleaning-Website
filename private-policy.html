@@ -12,20 +12,26 @@
     <script src="cookies-banner.js"></script>
 </head>
 <body>
-    <div class="topnav">
-        <div class="logo">
-            <a href="index.html">
-                <img src="cleaning.png" alt="Logo" height="40">
-            </a>
-        </div>
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="Projects.html">Projects</a>
-            <a href="Our Services.html">Our Services</a>
-            <a href="Contact Us.html">Contact</a>
-            <a href="About Us.html">About Us</a>
-        </div>
-    </div>
+        <div class="topnav">
+  <div class="logo">
+    <a href="index.html">
+      <img src="cleaning.png" alt="Logo" height="40">
+    </a>
+  </div>
+
+  <!-- Бургер-кнопка (видна только на мобильных) -->
+  <button class="burger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Меню ссылок -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="Projects.html">Projects</a>
+    <a href="Our Services.html">Our Services</a>
+    <a href="Contact Us.html">Contact Us</a>
+    <a href="About Us.html">About Us</a>
+  </div>
     <div class="banner">
         <div class="banner-content">
             <h1>Privacy Policy</h1>
@@ -86,5 +92,11 @@
         <p>📧 Email: fableo992@gmail.com</p>
         <p>📍 Address: Co. Dublin, Ireland</p>
     </div>
+    <script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+  }
+</script>
 </body>
 </html>

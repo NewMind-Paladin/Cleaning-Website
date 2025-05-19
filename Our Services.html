@@ -15,19 +15,25 @@
 </head>
 <body>
     <div class="topnav">
-        <div class="logo">
-            <a href="index.html">
-                <img src="cleaning.png" alt="Logo" height="40">
-            </a>
-        </div>
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="Projects.html">Projects</a>
-            <a class="active"  href="Our Services.html">Our Services</a>
-            <a href="Contact Us.html">Contact Us</a>
-            <a href="About Us.html">About Us</a>
-        </div>
-    </div>
+  <div class="logo">
+    <a href="index.html">
+      <img src="cleaning.png" alt="Logo" height="40">
+    </a>
+  </div>
+
+  <!-- Бургер-кнопка (видна только на мобильных) -->
+  <button class="burger" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Меню ссылок -->
+  <div class="menu">
+    <a href="index.html">Home</a>
+    <a href="Projects.html">Projects</a>
+    <a class="active"  href="Our Services.html">Our Services</a>
+    <a href="Contact Us.html">Contact Us</a>
+    <a href="About Us.html">About Us</a>
+  </div>
 
   </div>
     <div class="banner">
@@ -135,6 +141,12 @@
             </div>
           </div>
       </footer>
+      <script>
+  function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
+  }
+</script>
       <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
       <script src="script.js"></script>
 </body>
